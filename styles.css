@@ -157,17 +157,31 @@ button:disabled {
   cursor: not-allowed;
 }
 
-button.harder {
+button#harderBtn {
   background: var(--accent-2);
 }
 
-button.easier {
+button#easierBtn {
   background: #475569;
 }
 
 button#showAnswerBtn {
   background: #90EE90;
   color: #1d1d1a;
+  padding: 0.8rem 1.2rem;
+  font-weight: 600;
+}
+
+button#validateBtn {
+  background: #f59e0b;
+  color: #1d1d1a;
+  padding: 0.8rem 1.2rem;
+  font-weight: 600;
+}
+
+button#resetScoreBtn {
+  background: #ef4444;
+  color: #ffffff;
   padding: 0.8rem 1.2rem;
   font-weight: 600;
 }
@@ -193,9 +207,26 @@ pre {
 .question-meta {
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
   gap: 0.75rem;
   margin-bottom: 0.65rem;
   color: var(--muted);
+}
+
+.weight-wrap {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.weight-adjust-btn {
+  min-width: 28px;
+  height: 28px;
+  padding: 0;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  line-height: 1;
 }
 
 .question-text {
@@ -212,6 +243,17 @@ pre {
 }
 
 .answer-option {
+  cursor: pointer;
+  display: inline-block;
+  border-radius: 6px;
+  transition: background-color 120ms ease;
+}
+
+.answer-option.selected-answer {
+  background-color: #dbeafe;
+  border-left: 4px solid #2563eb;
+  padding-left: 0.75rem;
+  padding-right: 0.5rem;
 }
 
 .answer-option.correct-answer {
@@ -221,6 +263,22 @@ pre {
   padding-right: 0.5rem;
   font-weight: 600;
   color: #1b5e20;
+}
+
+.answer-option.wrong-answer {
+  background-color: #fee2e2;
+  border-left: 4px solid #b91c1c;
+  padding-left: 0.75rem;
+  padding-right: 0.5rem;
+  color: #7f1d1d;
+}
+
+.answer-option.missed-answer {
+  background-color: #fef3c7;
+  border-left: 4px solid #b45309;
+  padding-left: 0.75rem;
+  padding-right: 0.5rem;
+  color: #78350f;
 }
 
 .hidden {
@@ -285,5 +343,6 @@ pre {
 
   .question-meta {
     flex-direction: column;
+    align-items: flex-start;
   }
 }

@@ -37,19 +37,16 @@
         </div>
 
         <div class="button-row">
-          <button id="prevQBtn" disabled>Back</button>
-          <button id="nextQBtn" disabled>Next</button>
+          <button id="prevQBtn" disabled>&lt;</button>
           <button id="nextBtn" disabled>Random</button>
+          <button id="nextQBtn" disabled>&gt;</button>
         </div>
 
         <div class="button-row">
           <button id="showAnswerBtn" disabled>Answers</button>
+          <button id="validateBtn" disabled>Validate</button>
+          <button id="resetScoreBtn" disabled>Reset score</button>
 
-        </div>
-
-        <div class="button-row">
-          <button id="harderBtn" class="harder" disabled>Harder</button>
-          <button id="easierBtn" class="easier" disabled>Easier</button>
         </div>
 
         <div class="button-row">
@@ -66,8 +63,15 @@
       <section class="panel question-panel">
         <div class="question-meta">
           <span id="questionCounter" class="mono">Question: -</span>
-          <span id="weightInfo" class="mono">Weight: -</span>
+          <span class="weight-wrap">
+            <span id="weightInfo" class="mono">Weight: -</span>
+            <button id="easierBtn" class="weight-adjust-btn" disabled>&lt;</button>
+            <button id="harderBtn" class="weight-adjust-btn" disabled>&gt;</button>
+          </span>
+          <span id="scoreInfo" class="mono">Score: 0 (0/0)</span>
         </div>
+
+        <p id="selectionFeedback" class="status">Select answers and click Validate.</p>
 
         <article>
           <h2>Question</h2>
@@ -80,11 +84,6 @@
         </article>
       </section>
     </div>
-    <section class="panel upload-panel">
-      <label for="questionFile" class="file-label">Question File (.txt)</label>
-      <input id="questionFile" type="file" accept=".txt,text/plain" />
-      <p id="fileStatus" class="status">No file loaded.</p>
-    </section>
   </main>
 
   <script src="app.js"></script>

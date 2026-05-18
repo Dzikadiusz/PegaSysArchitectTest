@@ -1,6 +1,3 @@
-const questionFileInput = document.getElementById("questionFile");
-const fileStatus = document.getElementById("fileStatus");
-
 const startSlider = document.getElementById("startSlider");
 const endSlider = document.getElementById("endSlider");
 const startValue = document.getElementById("startValue");
@@ -11,6 +8,8 @@ const nextBtn = document.getElementById("nextBtn");
 const nextQBtn = document.getElementById("nextQBtn");
 const prevQBtn = document.getElementById("prevQBtn");
 const showAnswerBtn = document.getElementById("showAnswerBtn");
+const validateBtn = document.getElementById("validateBtn");
+const resetScoreBtn = document.getElementById("resetScoreBtn");
 const harderBtn = document.getElementById("harderBtn");
 const easierBtn = document.getElementById("easierBtn");
 const resetWeightsBtn = document.getElementById("resetWeightsBtn");
@@ -19,6 +18,8 @@ const jumpToBtn = document.getElementById("jumpToBtn");
 
 const questionCounter = document.getElementById("questionCounter");
 const weightInfo = document.getElementById("weightInfo");
+const scoreInfo = document.getElementById("scoreInfo");
+const selectionFeedback = document.getElementById("selectionFeedback");
 const questionText = document.getElementById("questionText");
 const answerBlock = document.getElementById("answerBlock");
 const answerText = document.getElementById("answerText");
@@ -27,6 +28,11 @@ let questions = [];
 let currentQuestion = null;
 let currentQuestionIndex = -1;
 let activeQuestionSetKey = "";
+let score = {
+  attempted: 0,
+  correct: 0,
+  points: 0,
+};
 
 const SAMPLE_DATA = ` 
 1.In which three situations can you use a data transform? (Choose Three) 
@@ -56,8 +62,7 @@ B. Caching data retrieved from an external system
 C. Storing reference data as part of the application 
 D. Saving case data in an application 
 Answer: B C 
-5.As part of the case design, after someone completes a purchase, the application should send a 
-confirmation email. 
+5.As part of the case design, after someone completes a purchase, the application should send a confirmation email. 
 How do you design the case life cycle to send the email? 
 A. As part of the stage configuration 
 B. As an alternate stage 
@@ -124,9 +129,7 @@ Answer: A B
 12.DRAG DROP 
 Select each Use Case on the left and drag it to the appropriate Automation on the right. 
 Answer:
-13.An online sales application supports both laptop and mobile devices. You are configuring the 
-application skin and you notice the responsive layout in the mobile device is not displaying views as 
-stakeholders require. 
+13.An online sales application supports both laptop and mobile devices. You are configuring the application skin and you notice the responsive layout in the mobile device is not displaying views as stakeholders require. 
 Which two options allow you to resolve this situation without negatively impacting the laptop users? 
 (Choose two.) 
 A. Use the same application skin in all portals. 
@@ -137,8 +140,7 @@ Answer: B D
 14.A customer refund case type requires that an auditor receives an email notification if the refund is 
 greater than twice the price of the item. 
 Which participant role do you select to configure this requirement? 
-A.  
-Customer 
+A. Customer 
 B. Interested individual 
 C. Owner 
 D. Work queue 
@@ -165,8 +167,7 @@ C. Repeating dynamic layout
 D. Dynamic layout 
 Answer: C 
 18.Which issue do you address by simulating a data source? 
-A. The product database moves to a new data source accessible by a web service that is not yet 
-configured. 
+A. The product database moves to a new data source accessible by a web service that is not yet configured. 
 B. You need to test a save plan for a savable data page that updates the cost of coverage options for 
 insurance policies 
 C. In production, the customer database needs to be taken off-line overnight for scheduled maintenance. 
@@ -179,41 +180,27 @@ B. Clipboard tool
 C. The Tracer 
 D. Live Ul 
 Answer: A 
-20.You are creating a case type to process job applications for a large corporation. Job applications for 
-security positions require a physical assessment in addition to the standard criminal background check. 
-The physical assessment can occur before or after the background check. 
-How do you configure a case type to achieve the required behavior? 
+20.You are creating a case type to process job applications for a large corporation. Job applications for security positions require a physical assessment in addition to the standard criminal background check. The physical assessment can occur before or after the background check. How do you configure a case type to achieve the required behavior? 
 A. Create a process for the physical assessment that is followed by a process for the background check. 
 B. Create a process for the physical assessment that is parallel to the background check process. 
-C. Create a process on one stage for the background check and a process on another stage for the 
-physical assessment. 
+C. Create a process on one stage for the background check and a process on another stage for the physical assessment. 
 D. Create a process for the background check and an optional process for the physical assessment. 
 Answer: B
-21.Customers on a hotel booking application can add additional amenities to their reservation. The 
-application displays a view with the available amenities, descriptions and costs. To reduce scrolling, the 
-content is organized into multiple areas. Each area is accessed using a drop down menu that lists each 
-amenity. 
-How do you configure the user interface to improve access to the content and achieve the business 
-requirement described? 
-A. Configure a disable when condition on each field to allow access when the associated amenity is 
-selected on the drop down control. 
-B. Configure a repeating dynamic layout with an embedded section for each amenity and set the layout 
-format to grouped. 
-C. Configure a layout group to separate each amenity into individual panels and set the layout to a menu 
-format. 
-D. Configure a visible when condition on the drop down control to display each section when the 
-associated amenity is selected. 
+21.Customers on a hotel booking application can add additional amenities to their reservation. The application displays a view with the available amenities, descriptions and costs. To reduce scrolling, the content is organized into multiple areas. Each area is accessed using a drop down menu that lists each amenity. 
+How do you configure the user interface to improve access to the content and achieve the business requirement described? 
+A. Configure a disable when condition on each field to allow access when the associated amenity is selected on the drop down control. 
+B. Configure a repeating dynamic layout with an embedded section for each amenity and set the layout format to grouped. 
+C. Configure a layout group to separate each amenity into individual panels and set the layout to a menu format. 
+D. Configure a visible when condition on the drop down control to display each section when the associated amenity is selected. 
 Answer: C 
-22.A bookseller maintains a database of more than 10,000 book titles. You have been asked to configure 
-a form that a allow users to select a book by title. 
+22.A bookseller maintains a database of more than 10,000 book titles. You have been asked to configure a form that a allow users to select a book by title. 
 How do you configure the form? 
 A. Add a drop-down control arid source the data from the property value used in the control. 
 B. Add a drop-down control and Source the data using a data page. 
 C. Add an autocomplete control and Source the data using a data page. 
 D. Add an autocomplete control and source the data from the clipboard work page. 
 Answer: C 
-23.You have been asked to create a pie chart that shows the number of cases each manager has 
-created. A list report contains columns for manager name, case ID, and office. 
+23.You have been asked to create a pie chart that shows the number of cases each manager has created. A list report contains columns for manager name, case ID, and office. 
 How do you configure the list report in order to create the pie chart? 
 A. Group the case ID column. 
 B. Group the manager name column. 
@@ -227,28 +214,21 @@ B. A data transform to map the application data model to the connector
 C. A simulated data source to test the implementation 
 D. The uniform resource identifier that identifies the web service 
 Answer: A D 
-25.An international online car parts business wants customers to find parts for any vehicle easily. You are
-asked to implement the following requirement: Customers muse select a make, model, and year to 
-initiate a vehicle-specific search. 
+25.An international online car parts business wants customers to find parts for any vehicle easily. You are asked to implement the following requirement: Customers muse select a make, model, and year to initiate a vehicle-specific search. 
 How do you configure the data storage in the application to implement the requirement? 
 A. Configure a data page to store the make, model, and year vehicle data. 
-B. Configure a connection to an external system of record that contains the make, model, and year 
-vehicle data. 
+B. Configure a connection to an external system of record that contains the make, model, and year vehicle data. 
 C. Configure a static list of the make, model, and year vehicle data. 
 D. Configure a local data storage of the make, model, and year vehicle data. 
 Answer: B 
-26.Which two collaboration tools allow teams to communicate faster and share information more 
-efficiently while resolving cases? (Choose two.) 
+26.Which two collaboration tools allow teams to communicate faster and share information more efficiently while resolving cases? (Choose two.) 
 A. Dashboards 
 B. Widgets 
 C. Tags 
 D. Pulse 
 Answer: C D 
-27.A door manufacturer offers a finite list of colors on all its doors. As part of the order, customers can 
-select the color of the door. Select the data page definition configuration settings to source a color drop
-down list to minimize memory usage. 
-Object Type » ACME-Products-Data-Color or ACME-Products-Work-Color or ACME-Products-Work
-ColorFeedback 
+27.A door manufacturer offers a finite list of colors on all its doors. As part of the order, customers can select the color of the door. Select the data page definition configuration settings to source a color drop down list to minimize memory usage. 
+Object Type » ACME-Products-Data-Color or ACME-Products-Work-Color or ACME-Products-Work ColorFeedback 
 Edit Mode » Readonly Or Editable Or Savable Scope » Thread Or Requestor Or Node 
 A. Page, ACME-Products-Data-Color,ReadOnly,Node 
 B. List, ACME-Products-Data-Color,ReadOnly,Thread 
@@ -257,8 +237,7 @@ D. List, ACME-Products-Work-Color,ReadOnly,Node
 E. List, ACME-Products-Work-ColorFeedback,ReadOnly,Node 
 F. List, ACME-Products-Data-Color,ReadOnly,Node 
 Answer: F 
-28.A travel authorization requires approvals from the requestor's manager, division VP, and possibly an 
-accountant based on the total amount. 
+28.A travel authorization requires approvals from the requestor's manager, division VP, and possibly an accountant based on the total amount. 
 Which configuration satisfies this use case? 
 A. Cascading approval using when rules to identify the assigned user 
 B. Cascading approval using the reporting manager 
@@ -279,9 +258,7 @@ B. Text the customer with status changes in an insurance claim.
 C. Assign a new insurance claim to a case worker to process. 
 D. Phone a customer for additional information about the case. 
 Answer: A B 
-31.When a user selects a item in a list, the application displays data about that item. Data is copies to a 
-page property using the Copy from a data page options. 
-After the data has been copies to the property, when is the data copies to the property again? 
+31.When a user selects a item in a list, the application displays data about that item. Data is copies to a page property using the Copy from a data page options. After the data has been copies to the property, when is the data copies to the property again? 
 A. Never 
 B. The next time the case is opened 
 C. The next time the property is accessed 
@@ -396,36 +373,27 @@ B. To determine which application needs to be assessed for test coverage.
 C. To identity which users have the appropriate permissions to run test suites. 
 D. To create user-level test coverage reports, but not application-level coverage reports. 
 Answer: A 
-45.An on-demand transportation application has a Conversation preference data type. When customers 
-use the application to request a ride, they can specify their conversation preference: whether they would 
-like to talk to their driver or if they would prefer silence. Company stakeholders are interested in 
-analyzing the conversation preference data. 
+45.An on-demand transportation application has a Conversation preference data type. When customers use the application to request a ride, they can specify their conversation preference: whether they would like to talk to their driver or if they would prefer silence. Company stakeholders are interested in analyzing the conversation preference data. 
 How is the Conversation preference data type sourced? 
 A. Local system of record 
 B. No system of record 
 C. External system of record 
 Answer: B 
-46.With Pega's Situational Layer Cake approach, how do you configure a regional variation for Human 
-Resources (HR) time off cases? 
+46.With Pega's Situational Layer Cake approach, how do you configure a regional variation for Human Resources (HR) time off cases? 
 A. Create a rule for the variation and add the rule to the common layer of the application. 
 B. Create a rule for the variation and replace the existing HR time off rule in the application common 
 layer. 
 C. Create a rule for the variation and add it to a secondary common application layer. 
 D. Create a rule for the variation and add the rule to the layer for the region 
 Answer: D 
-47.In a claims application customers can file home insurance claims. Each claims contains a list of items 
-of loss. Depending on the situation, some claims… investigated for potential fraud in parallel to the 
-actual claim process. 
+47.In a claims application customers can file home insurance claims. Each claims contains a list of items of loss. Depending on the situation, some claims… investigated for potential fraud in parallel to the actual claim process. 
 Which two case types do you create to support this scenario? (Choose two.) 
 A. Items of loss 
 B. Customer 
 C. Claim 
 D. Fraud Investigation 
 Answer: C D 
-48.From the employee training portal, an employee opens a new Enrollment case, submits course 
-selections, and receives an email confirmation. There is an error in the email confirmation. You must 
-identify the cause of the error by recording a set of interactions on the portal and testing expected
-behavior on the data collection fields. 
+48.From the employee training portal, an employee opens a new Enrollment case, submits course selections, and receives an email confirmation. There is an error in the email confirmation. You must identify the cause of the error by recording a set of interactions on the portal and testing expected behavior on the data collection fields. 
 What three steps, when applied in combination, achieve the required testing? (Choose Three) 
 A. Add stage-entry validations on the Enrollment case fields. 
 B. Create a test case for the employee portal. 
@@ -820,10 +788,7 @@ B. The service is not available yet.
 C. You need to test each flow path in the case processing. 
 D. The connector is configured to use global resource settings. 
 Answer: B C 
-95.An airline has the following requirement: 
-A passenger requiring a service animal must document the type of animal, the size of the animal, and
-any relevant medical information the crew may need during the flight. The application prompts the 
-passenger for this information when the passenger declares travel with a service animal. 
+95.An airline has the following requirement: A passenger requiring a service animal must document the type of animal, the size of the animal, and any relevant medical information the crew may need during the flight. The application prompts the passenger for this information when the passenger declares travel with a service animal. 
 Which case life cycle configuration meets this requirement? 
 A. Add a process to the case life cycle for service animal accommodation and apply a condition to 
 determine when to, run the process. 
@@ -891,18 +856,14 @@ B. A developer makes changes to an email message that is configured in the case 
 C. A designer uses Design mode at runtime to modify a view to use a two column template. 
 D. A developer creates a parallel process to audit the changes that a service agent makes. 
 Answer: A 
-103.A customer calls to apply for a new bank account. The customer service representative (CSR) needs 
-to perform an assignment named Select Account Type. During the discussion, the customer can request 
-written information regarding different account types. 
+103.A customer calls to apply for a new bank account. The customer service representative (CSR) needs to perform an assignment named Select Account Type. During the discussion, the customer can request written information regarding different account types. 
 Select the case lifecycle design that satisfies this requirement. 
 A. A user view for requesting information to the Select Account Type assignment. 
 B. Add an optional action to the stage that contains the Select Account Type assignment. 
 C. Add a case-wide optional action. 
 D. Add a router to the Select Account Type assignment. 
 Answer: B 
-104.A development team plans to enhance functionality of an existing application by changing several
-user interface rules. The team would like to pilot the enhancements to a small group of users before 
-rolling the changes out to the entire user base. 
+104.A development team plans to enhance functionality of an existing application by changing several user interface rules. The team would like to pilot the enhancements to a small group of users before rolling the changes out to the entire user base. 
 What approach maximizes reuse and maintainability? 
 A. Place the updated rules into a new minor version of the ruleset and include the new ruleset version in 
 a new application. 
@@ -919,10 +880,7 @@ B. On each operator's record, associate the operator with the same workgroup.
 C. On the work group record, associate the operators with the workgroup. 
 D. On each unit record, associate both operators with each unit. 
 Answer: B 
-106.Consider the following scenario: During the Interview process for a Job Application case, an 
-administrative assistant selects the date and location of the interview. - Next, an email confirmation is 
-sent to the candidate. - During the interview, the hiring manager captures notes from the discussion. - 
-Finally, the candidate is assigned a technical exercise and the results are added to the case. 
+106.Consider the following scenario: During the Interview process for a Job Application case, an administrative assistant selects the date and location of the interview. - Next, an email confirmation is sent to the candidate. - During the interview, the hiring manager captures notes from the discussion. - Finally, the candidate is assigned a technical exercise and the results are added to the case. 
 Select two step names that follow the guidelines for identifying and naming the steps in the process. 
 (Choose Two) 
 A. Notify Candidate 
@@ -942,8 +900,7 @@ submits the form, the total hours change.
 D. Use a data transform. When the user enters the form, the data transform determines the sum of the 
 work, vacation, and sick time properties. 
 Answer: B
-108.ABC BankCorp wants to create a mobile app experience for users and CSRs for its Transaction 
-Dispute application. 
+108.ABC BankCorp wants to create a mobile app experience for users and CSRs for its Transaction Dispute application. 
 Of the following requirements, which option requires you to configure distinct mobile app channels? 
 (Choose two) 
 A. CSRs can create other case type instances on the mobile app. 
@@ -1002,10 +959,7 @@ C. Configure a repeating dynamic layout with an embedded section for each option
 format to grouped. 
 D. Configure a data relationship to select the option using the Drop-down list record selection. 
 Answer: A C 
-115.Creating a new rule in Pega Platform is typically done to define a new behavior or functionality in the 
-application, which can then be reused as needed. In the given scenario, a designer is reusing a UI 
-section every time the same behavior is needed in the application. By creating a new rule for the UI 
-section, the designer can ensure consistent behavior and avoid duplicating effort. 
+115.Creating a new rule in Pega Platform is typically done to define a new behavior or functionality in the application, which can then be reused as needed. In the given scenario, a designer is reusing a UI section every time the same behavior is needed in the application. By creating a new rule for the UI section, the designer can ensure consistent behavior and avoid duplicating effort. 
 For which use case do you create a new rule in a Pega Platform™ application? 
 A. A developer creates a parallel process to audit changes that a service agent makes. 
 B. A developer makes changes to an email message configured in the case life cycle. 
@@ -1018,8 +972,7 @@ B. .Home.State.Address
 C. .Home(Address).State 
 D. .Address.Home.State 
 Answer: A 
-117.To qualify for an instant loan, an applicant must earn a monthly income of at least GBP2000 and 
-cannot exceed GBP20000 in credit card debt. 
+117.To qualify for an instant loan, an applicant must earn a monthly income of at least GBP2000 and cannot exceed GBP20000 in credit card debt. 
 How do you enforce these restrictions when requesting an instant loan? 
 A. Use UI controls to validate the entries in the income and credit card debt fields. 
 B. Use a Validate rule to call two Edit validate rules: one for income and one for credit card debt. 
@@ -1042,8 +995,7 @@ B. Route to a workbasket where all three roles have access.
 C. Create business logic to route to the different approvers. 
 D. Create an approval step with cascading approval. 
 Answer: A 
-120.A company often receives multiple IT tickets for the same issue, such as ''the office Wi-Fi is down. 
-You configure Search duplicate cases step to identify duplicate IT tickets. 
+120.A company often receives multiple IT tickets for the same issue, such as ''the office Wi-Fi is down. You configure Search duplicate cases step to identify duplicate IT tickets. 
 What is the basic condition for the Search duplicate cases step? 
 A. Name of submitter is same 
 B. Issue type is same 
@@ -1296,9 +1248,7 @@ B. Create a field group list property and make the property a data reference.
 C. Configure the view in Run mode and change the order of the columns in the view. 
 D. Edit the field group list property and set data access to copy data from a data page. 
 Answer: A B 
-150.A music studio allows clients to upload audio recordings, and if they choose, they can upload before 
-they begin consultation. The studio wants to pause case processing after the Client Intake stage and 
-give clients 72 hours to upload recordings before beginning the Client Consultation process. 
+150.A music studio allows clients to upload audio recordings, and if they choose, they can upload before they begin consultation. The studio wants to pause case processing after the Client Intake stage and give clients 72 hours to upload recordings before beginning the Client Consultation process. 
 Which configuration meets this requirement? 
 A. Configure a case wide optional action to allow uploads. Add a Wait shape with a Timer Wait type set 
 to 72 hours. 
@@ -1453,8 +1403,7 @@ C. Automatically calculate order total when users change quantities.
 D. Display partner information fields when a screen loads for married applicants. 
 E. Display a shipping address section when users select the Different than billing address check box. 
 Answer: B D E 
-170.How do you configure the application to display a field for entering a mobile phone number only 
-when the check box is selected? 
+170.How do you configure the application to display a field for entering a mobile phone number only when the check box is selected? 
 A. Use a when condition in a data transform to determine whether to show the mobile phone number 
 field. 
 B. Use a when condition in the flow to branch the flow based on case data. 
@@ -1526,8 +1475,7 @@ B. MLP sizing leads to precision in the sprint cycle and resource planning.
 C. Creation of case steps is factored into MLP sizing. 
 D. Initial estimations are high-level and can be refined during sizing. 
 Answer: B D 
-178.You are asked to create a visualization that allows managers in the Customer Service division to 
-track the number and status of Customer Support Request cases submitted over the last 30 days. 
+178.You are asked to create a visualization that allows managers in the Customer Service division to track the number and status of Customer Support Request cases submitted over the last 30 days. 
 What is the process that you follow to create this visualization? 
 A. Create a new report on the Data landing page. 
 B. Add a report widget to a portal on the Explore data landing page. 
@@ -1542,9 +1490,7 @@ B. Case Designer
 C. The Data Explorer 
 D. Live UI 
 Answer: A 
-180.When applying for a credit limit increase, customers with standard credit cards must provide 
-information in an Employment Information process. Requests from customers with Platinum credit cards 
-automatically skip this process. 
+180.When applying for a credit limit increase, customers with standard credit cards must provide information in an Employment Information process. Requests from customers with Platinum credit cards automatically skip this process. 
 What task do you perform to implement this requirement? 
 A. Add an Approve/Reject step to test the card type. 
 B. Add a card type true/false field to a user view. 
@@ -1627,9 +1573,7 @@ division-specific payment rules.
 C. Place the Ul rules in the base layer, and create a parallel base layer for the payments rules. 
 D. Place the Ul rules in the base layer, and create a new layer for the payment rule for each division. 
 Answer: B 
-190.Apartment tenants submit maintenance requests that specify their name, address, request type, and 
-description of the request. Tenants may submit multiple maintenance requests for different request types. 
-The company wants to identify duplicate maintenance requests from the same address. 
+190.Apartment tenants submit maintenance requests that specify their name, address, request type, and description of the request. Tenants may submit multiple maintenance requests for different request types. The company wants to identify duplicate maintenance requests from the same address. 
 Which two configurations, when used together on the Search duplicate cases step, achieve this goal? 
 (Choose Two) 
 A. Configure the request type as a weighted condition. 
@@ -1709,9 +1653,7 @@ B. Configure a test page with data to satisfy the circumstancing condition
 C. Specify the value of the circumstancing property when prompted in the run rule dialog 
 D. Test the data transform to verity the result is correct 
 Answer: A B 
-200.ABC BankCorp operates two subsidiaries, GloboBank and LocalBank, with different brandings. ABC 
-BankCorp wants to create a mobile app experience for both users and customer service representatives 
-(CSRs) for its Transaction Dispute application. 
+200.ABC BankCorp operates two subsidiaries, GloboBank and LocalBank, with different brandings. ABC BankCorp wants to create a mobile app experience for both users and customer service representatives (CSRs) for its Transaction Dispute application. 
 Of the following requirements, which two options affect the number of mobile app channels that you need 
 to configure? (Choose Two) 
 A. Mobile apps must support both phones and tablets. 
@@ -1867,9 +1809,7 @@ B. Manage administrative functions such as access to log files.
 C. Define the Ul behavior for each view in a case type when the case is displayed on a mobile device. 
 D. Design how Ul elements render across different mobile devices. 
 Answer: A D 
-220.A requirement states: Loan applicants must enter their annual salary. If the salary is above the 
-qualifying threshold, the application is automatically approved. If the salary is below the threshold, the 
-applicant must identify a cosigner. 
+220.A requirement states: Loan applicants must enter their annual salary. If the salary is above the qualifying threshold, the application is automatically approved. If the salary is below the threshold, the applicant must identify a cosigner. 
 Select the two configuration options that follow best practices to meet the requirement. (Choose Two) 
 A. Design a user view with an annual salary field and a data relationship for cosigner information. Use a
 visibility condition to display the cosigner information when the salary is below the threshold. 
@@ -2179,6 +2119,40 @@ C. App Studio
 D. Dev Studio 
 Answer: D  `;
 
+// Question corrections and notes
+const QUESTION_CORRECTIONS = {
+  9: { status: "INVALID", note: "INVALID_QUESTION" },
+  18: { correct: "D", incorrect: "A", note: "not A (simulate data, not integration migration)" },
+  23: { correct: "B", incorrect: "D", note: "not D (group by manager)" },
+  31: { correct: "A", incorrect: "D", note: "not D (copy-from data page = one-time only)" },
+  57: { correct: "B,C,D", incorrect: "B,C,E", note: "not E (work party to represent the customer is correct)" },
+  65: { correct: "B", incorrect: "B,D", note: "not B,D (D invalid syntax)" },
+  66: { correct: "A", incorrect: "B", note: "not B (use case-wide optional action)" },
+  77: { correct: "B", incorrect: "C", note: "not C (delegation = business control)" },
+  83: { correct: "A,B", incorrect: "A,C", note: "not A,C (authority matrix = non-hierarchy)" },
+  85: { correct: "A,D", incorrect: "B,D", note: "not B,D (valid data = type + logic)" },
+  94: { correct: "A,B", incorrect: "B,C", note: "not B,C (simulation = unavailable/slow systems)" },
+  101: { correct: "B", incorrect: "D", note: "not D (field value = mostly static)" },
+  114: { correct: "A", incorrect: "A,C", note: "not A,C (layout group only correct)" },
+  123: { correct: "A,C,D", incorrect: "A,D,E", note: "not A,D,E (data transform does not display values)" },
+  134: { correct: "B/C", incorrect: "D", note: "not D (process start condition, not validation)" },
+  140: { correct: "A", incorrect: "A,B", note: "not A,B (email config not Dev Studio)" },
+  147: { correct: "A,D", incorrect: "A,B,D", note: "not A,B,D (UI config not unit test)" },
+  150: { correct: "A", incorrect: "D", note: "not D (wait step required)" },
+  151: { correct: "C", incorrect: "B", note: "not B (wait = dependency, not approval)" },
+  158: { correct: "B,D", incorrect: "A,C", note: "not A,C (branching needed for isolation)" },
+  166: { correct: "A,B", incorrect: "A,D", note: "not A,D (unit test = rule behavior)" },
+  178: { correct: "D", incorrect: "B", note: "not B (use Insight, not widget directly)" },
+  190: { correct: "A,C", incorrect: "A,B", note: "not A,B (address = key duplicate condition)" },
+  209: { correct: "A", incorrect: "D", note: "not D (visibility on checkbox itself)" },
+  212: { correct: "A", incorrect: "C", note: "not C (SLA = process level)" },
+  218: { correct: "B", incorrect: "A", note: "not A (node scope, not app)" },
+  221: { correct: "C", incorrect: "B", note: "not B (portal controls access)" },
+  224: { correct: "A", incorrect: "A,D", note: "not A,D (responsive layout only)" },
+  250: { correct: "D", incorrect: "C", note: "not C (specific user = worklist)" },
+  253: { correct: "A,D", incorrect: "D", note: "not D (need input + output columns)" },
+};
+
 const STORAGE_PREFIX = "testing-hub.weights.v1";
 
 function hashString(value) {
@@ -2227,9 +2201,13 @@ function renderQuestionAsHTML(text) {
   const spans = lines.map((line) => {
     const match = line.match(/^([A-Z])[\.\)\:]/);
     if (match) {
-      return `<span class="answer-option" data-letter="${match[1]}">${escapeHtml(line)}</span>`;
+      const escapedLine = escapeHtml(line);
+      const boldedLine = escapedLine.replace(/\(([^)]+)\)/g, '<strong>($1)</strong>');
+      return `<span class="answer-option" data-letter="${match[1]}">${boldedLine}</span>`;
     }
-    return `<span>${escapeHtml(line)}</span>`;
+    const escapedLine = escapeHtml(line);
+    const boldedLine = escapedLine.replace(/\(([^)]+)\)/g, '<strong>($1)</strong>');
+    return `<span>${boldedLine}</span>`;
   });
 
   return spans.join("<br>");
@@ -2242,6 +2220,105 @@ function getQuestionSetKey(items) {
     .join("\n");
 
   return `${STORAGE_PREFIX}.${hashString(canonical)}`;
+}
+
+function getEffectiveAnswer(question) {
+  const correction = QUESTION_CORRECTIONS[question.number];
+  if (correction && correction.correct) {
+    return correction.correct;
+  }
+
+  return question.answer;
+}
+
+function formatAnswerWithCorrections(questionNumber, correctAnswer) {
+  const correction = QUESTION_CORRECTIONS[questionNumber];
+  
+  if (!correction) {
+    return escapeHtml(correctAnswer);
+  }
+  
+  if (correction.status === "INVALID") {
+    return `<span style="color: #ff6b6b; font-weight: bold;">❌ ${correction.note}</span>`;
+  }
+  
+  let html = `<div style="margin-bottom: 8px;">${escapeHtml(correctAnswer)}</div>`;
+  html += `<div style="border-top: 2px solid #ffa500; padding-top: 8px; margin-top: 8px; color: #ff6b6b;">`;
+  html += `<strong>⚠ CORRECTION NOTE:</strong><br/>`;
+  html += `Correct Answer: <strong>${escapeHtml(correction.correct)}</strong><br/>`;
+  if (correction.incorrect) {
+    html += `${escapeHtml(correction.incorrect)}<br/>`;
+  }
+  html += `${escapeHtml(correction.note)}`;
+  html += `</div>`;
+  
+  return html;
+}
+
+function updateScoreInfo() {
+  scoreInfo.textContent = `Score: ${score.points} (${score.correct}/${score.attempted})`;
+}
+
+function resetQuizProgress() {
+  score = { attempted: 0, correct: 0, points: 0 };
+  updateScoreInfo();
+
+  for (const question of questions) {
+    question._selectedLetters = new Set();
+    question._validated = false;
+    question._wasCorrect = false;
+    question._feedback = "";
+  }
+}
+
+function wireAnswerOptionSelection(question) {
+  const answerOptions = questionText.querySelectorAll("[data-letter]");
+
+  answerOptions.forEach((optionEl) => {
+    const letter = optionEl.dataset.letter;
+
+    optionEl.addEventListener("click", () => {
+      if (!currentQuestion || currentQuestion.number !== question.number || question._validated) {
+        return;
+      }
+
+      if (question._selectedLetters.has(letter)) {
+        question._selectedLetters.delete(letter);
+      } else {
+        question._selectedLetters.add(letter);
+      }
+
+      optionEl.classList.toggle("selected-answer", question._selectedLetters.has(letter));
+    });
+  });
+}
+
+function applyValidationStyles(question) {
+  const answerOptions = questionText.querySelectorAll("[data-letter]");
+  const correctAnswers = extractCorrectAnswers(getEffectiveAnswer(question));
+
+  answerOptions.forEach((optionEl) => {
+    const letter = optionEl.dataset.letter;
+    const isSelected = question._selectedLetters.has(letter);
+    const isCorrect = correctAnswers.has(letter);
+
+    optionEl.classList.remove("selected-answer", "correct-answer", "wrong-answer", "missed-answer");
+
+    if (!question._validated) {
+      if (isSelected) {
+        optionEl.classList.add("selected-answer");
+      }
+      return;
+    }
+
+    if (isSelected && isCorrect) {
+      optionEl.classList.add("correct-answer");
+    } else if (isSelected && !isCorrect) {
+      optionEl.classList.add("wrong-answer");
+    } else if (!isSelected && isCorrect) {
+      optionEl.classList.add("missed-answer");
+    }
+  });
 }
 
 function loadSavedWeights(storageKey) {
@@ -2308,21 +2385,6 @@ function parseQuestions(rawText) {
       continue;
     }
 
-    const qMatch = line.match(/^(\d+)\s*[.:)]\s*(.*)$/);
-    if (qMatch) {
-      if (active && active.answer) {
-        parsed.push(active);
-      }
-
-      active = {
-        number: Number(qMatch[1]),
-        text: qMatch[2] || "",
-        answer: "",
-        weight: 1,
-      };
-      continue;
-    }
-
     const answerMatch = line.match(/^Answer\s*:\s*(.*)$/i);
     if (answerMatch && active) {
       active.answer = answerMatch[1].trim();
@@ -2331,9 +2393,23 @@ function parseQuestions(rawText) {
       continue;
     }
 
-    if (active) {
-      active.text = active.text ? `${active.text}\n${line}` : line;
+    // Only start a new question when there is no active question being built.
+    // This prevents numbered list items inside question text (for example: "1.", "2.")
+    // from being parsed as standalone questions.
+    if (!active) {
+      const qMatch = line.match(/^(\d+)\s*[.:)]\s*(.*)$/);
+      if (qMatch) {
+        active = {
+          number: Number(qMatch[1]),
+          text: qMatch[2] || "",
+          answer: "",
+          weight: 1,
+        };
+      }
+      continue;
     }
+
+    active.text = active.text ? `${active.text}\n${line}` : line;
   }
 
   return parsed;
@@ -2346,6 +2422,8 @@ function setControlsEnabled(enabled) {
   nextQBtn.disabled = !enabled;
   prevQBtn.disabled = !enabled;
   showAnswerBtn.disabled = !enabled;
+  validateBtn.disabled = !enabled;
+  resetScoreBtn.disabled = !enabled;
   harderBtn.disabled = !enabled;
   easierBtn.disabled = !enabled;
   resetWeightsBtn.disabled = !enabled;
@@ -2392,6 +2470,18 @@ function renderQuestion(question) {
   currentQuestion = question;
   currentQuestionIndex = questions.findIndex(q => q.number === question.number);
 
+  if (!question._validated) {
+    question._selectedLetters = new Set();
+  } else if (!question._selectedLetters) {
+    question._selectedLetters = new Set();
+  }
+  if (typeof question._validated !== "boolean") {
+    question._validated = false;
+  }
+  if (typeof question._feedback !== "string") {
+    question._feedback = "";
+  }
+
   questionCounter.textContent = `Question: ${question.number}`;
   weightInfo.textContent = `Weight: ${question.weight.toFixed(2)}`;
   
@@ -2405,10 +2495,19 @@ function renderQuestion(question) {
     weightInfo.classList.add("weight-high");
   }
   
+  // Add visual indicator if this question has corrections
+  const correction = QUESTION_CORRECTIONS[question.number];
+  if (correction) {
+    questionCounter.innerHTML = `Question: ${question.number} <span style="color: #ff6b6b; font-weight: bold; margin-left: 8px;">⚠ CORRECTION</span>`;
+  }
+  
   questionText.innerHTML = renderQuestionAsHTML(question.text);
+  wireAnswerOptionSelection(question);
+  applyValidationStyles(question);
 
-  answerText.textContent = question.answer;
+  answerText.innerHTML = formatAnswerWithCorrections(question.number, question.answer);
   answerBlock.classList.add("hidden");
+  selectionFeedback.textContent = question._feedback || "Select answers and click Validate.";
   
   const answerOptions = parseAnswerOptions(question.text);
   question._options = answerOptions;
@@ -2542,38 +2641,6 @@ function normalizeRange(changed) {
   updateRangeInfo();
 }
 
-questionFileInput.addEventListener("change", async (event) => {
-  const file = event.target.files?.[0];
-  if (!file) {
-    return;
-  }
-
-  const text = await file.text();
-  const parsed = parseQuestions(text);
-
-  if (!parsed.length) {
-    questions = [];
-    setControlsEnabled(false);
-    fileStatus.textContent = "Could not parse any questions. Check file format.";
-    questionText.textContent = "Upload a valid file to begin.";
-    questionCounter.textContent = "Question: -";
-    weightInfo.textContent = "Weight: -";
-    weightInfo.classList.remove("weight-low", "weight-medium", "weight-high");
-    answerText.textContent = "";
-    answerBlock.classList.add("hidden");
-    return;
-  }
-
-  activeQuestionSetKey = getQuestionSetKey(parsed);
-  questions = applySavedWeights(parsed, activeQuestionSetKey);
-  configureSliders();
-  setControlsEnabled(true);
-  saveCurrentWeights();
-
-  fileStatus.textContent = `Loaded ${questions.length} question${questions.length === 1 ? "" : "s"}.`;
-  showRandomQuestion();
-});
-
 startSlider.addEventListener("input", () => {
   normalizeRange("start");
 });
@@ -2598,24 +2665,65 @@ showAnswerBtn.addEventListener("click", () => {
   answerBlock.classList.remove("hidden");
   
   if (!currentQuestion) {
-    console.log("No current question");
     return;
   }
 
-  const correctAnswers = extractCorrectAnswers(currentQuestion.answer);
-  console.log("Correct answers:", correctAnswers, "from:", currentQuestion.answer);
+  const correctAnswers = extractCorrectAnswers(getEffectiveAnswer(currentQuestion));
   
   const answerOptions = questionText.querySelectorAll("[data-letter]");
-  console.log("Found answer options:", answerOptions.length);
   
   answerOptions.forEach((optionEl) => {
+    optionEl.classList.remove("selected-answer", "correct-answer", "wrong-answer", "missed-answer");
     const letter = optionEl.dataset.letter;
-    console.log("Checking letter:", letter, "is correct:", correctAnswers.has(letter));
     if (correctAnswers.has(letter)) {
       optionEl.classList.add("correct-answer");
-      console.log("Added correct-answer class to:", letter);
     }
   });
+});
+
+validateBtn.addEventListener("click", () => {
+  if (!currentQuestion) {
+    return;
+  }
+
+  if (currentQuestion._validated) {
+    selectionFeedback.textContent = currentQuestion._feedback || "Already validated.";
+    answerBlock.classList.remove("hidden");
+    return;
+  }
+
+  if (!currentQuestion._selectedLetters || currentQuestion._selectedLetters.size === 0) {
+    selectionFeedback.textContent = "Select at least one answer before validating.";
+    return;
+  }
+
+  const correctAnswers = extractCorrectAnswers(getEffectiveAnswer(currentQuestion));
+  const selectedAnswers = currentQuestion._selectedLetters;
+
+  const isExactMatch = selectedAnswers.size === correctAnswers.size &&
+    Array.from(selectedAnswers).every((answer) => correctAnswers.has(answer));
+
+  currentQuestion._validated = true;
+  currentQuestion._wasCorrect = isExactMatch;
+  currentQuestion._feedback = isExactMatch ? "Correct! +1 point." : "Not correct. Review highlighted options.";
+
+  score.attempted += 1;
+  if (isExactMatch) {
+    score.correct += 1;
+    score.points += 1;
+  }
+
+  updateScoreInfo();
+  selectionFeedback.textContent = currentQuestion._feedback;
+  answerBlock.classList.remove("hidden");
+  applyValidationStyles(currentQuestion);
+});
+
+resetScoreBtn.addEventListener("click", () => {
+  resetQuizProgress();
+  if (currentQuestion) {
+    renderQuestion(currentQuestion);
+  }
 });
 
 harderBtn.addEventListener("click", () => {
@@ -2678,17 +2786,15 @@ function loadSampleData() {
   if (!parsed.length) {
     questions = [];
     setControlsEnabled(false);
-    fileStatus.textContent = "Could not parse sample data.";
     return;
   }
 
   activeQuestionSetKey = getQuestionSetKey(parsed);
   questions = applySavedWeights(parsed, activeQuestionSetKey);
+  resetQuizProgress();
   configureSliders();
   setControlsEnabled(true);
   saveCurrentWeights();
-
-  fileStatus.textContent = `Loaded ${questions.length} question${questions.length === 1 ? "" : "s"} (default data).`;
   showRandomQuestion();
 }
 
