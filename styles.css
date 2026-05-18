@@ -294,7 +294,7 @@ pre {
   margin: 0.65rem 0 0;
 }
 
-@media (max-width: 680px) {
+@media (max-width: 900px) {
   .content-wrapper {
     flex-direction: column-reverse;
     gap: 0.85rem;
@@ -324,6 +324,24 @@ pre {
 
   .button-row button {
     flex: 1 1 48%;
+  }
+
+  #prevQBtn,
+  #nextQBtn {
+    flex: 1 1 calc(50% - 0.25rem);
+  }
+
+  #prevQBtn {
+    order: 1;
+  }
+
+  #nextQBtn {
+    order: 2;
+  }
+
+  #nextBtn {
+    flex: 1 1 100%;
+    order: 3;
   }
 
   #jumpToInput {

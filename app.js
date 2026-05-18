@@ -2482,7 +2482,7 @@ function renderQuestion(question) {
     question._feedback = "";
   }
 
-  questionCounter.textContent = `Question: ${question.number}`;
+  questionCounter.textContent = `Q: ${question.number}`;
   weightInfo.textContent = `Weight: ${question.weight.toFixed(2)}`;
   
   // Update weight color based on value
