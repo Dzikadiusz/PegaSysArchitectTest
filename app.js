@@ -24,6 +24,12 @@ const questionText = document.getElementById("questionText");
 const answerBlock = document.getElementById("answerBlock");
 const answerText = document.getElementById("answerText");
 
+function setSelectionFeedback(text) {
+  if (selectionFeedback) {
+    selectionFeedback.textContent = text;
+  }
+}
+
 let questions = [];
 let currentQuestion = null;
 let currentQuestionIndex = -1;
@@ -2507,7 +2513,7 @@ function renderQuestion(question) {
 
   answerText.innerHTML = formatAnswerWithCorrections(question.number, question.answer);
   answerBlock.classList.add("hidden");
-  selectionFeedback.textContent = question._feedback || "Select answers and click Validate.";
+  setSelectionFeedback(question._feedback || "Select answers and click Validate.");
   
   const answerOptions = parseAnswerOptions(question.text);
   question._options = answerOptions;
@@ -2687,13 +2693,13 @@ validateBtn.addEventListener("click", () => {
   }
 
   if (currentQuestion._validated) {
-    selectionFeedback.textContent = currentQuestion._feedback || "Already validated.";
+    setSelectionFeedback(currentQuestion._feedback || "Already validated.");
     answerBlock.classList.remove("hidden");
     return;
   }
 
   if (!currentQuestion._selectedLetters || currentQuestion._selectedLetters.size === 0) {
-    selectionFeedback.textContent = "Select at least one answer before validating.";
+    setSelectionFeedback("Select at least one answer before validating.");
     return;
   }
 
@@ -2714,7 +2720,7 @@ validateBtn.addEventListener("click", () => {
   }
 
   updateScoreInfo();
-  selectionFeedback.textContent = currentQuestion._feedback;
+  setSelectionFeedback(currentQuestion._feedback);
   answerBlock.classList.remove("hidden");
   applyValidationStyles(currentQuestion);
 });
