@@ -36,6 +36,17 @@
           <button id="resetWeightsBtn" disabled>Reset Weights</button>
         </div>
 
+        <div class="toggle-row">
+          <label for="randomizeAnswersChk" class="toggle-label">
+            <input id="randomizeAnswersChk" type="checkbox" disabled />
+            Randomize answer order
+          </label>
+        </div>
+
+        <div class="button-row">
+          <button id="reviewRandomBtn" title="Jump to random marked question" disabled>&gt;</button>
+        </div>
+
         <div class="button-row">
             <button id="jumpToBtn" disabled>Go to</button>
           <input id="jumpToInput" type="number" min="1" placeholder="Question #" disabled />
@@ -71,9 +82,15 @@
           <span id="scoreInfo" class="mono">Score: 0 (0/0)</span>
         </div>
 
+        <div class="toggle-row review-toggle-row">
+          <label for="markForReviewChk" class="toggle-label">
+            <input id="markForReviewChk" type="checkbox" disabled />
+            Mark current question for review
+          </label>
+        </div>
+
 
         <article>
-          <h2>Question</h2>
           <p id="questionText" class="question-text">Upload a file to begin.</p>
           <p id="selectionFeedback" class="status mono">Select answers and click Validate.</p>
         </article>

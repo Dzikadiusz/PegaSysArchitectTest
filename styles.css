@@ -55,6 +55,11 @@ body {
   min-width: 0;
 }
 
+.question-panel.reviewed-question {
+  background: #fffdf4;
+  border-color: #e7dcc0;
+}
+
 .hero {
   padding: 0.25rem 0.25rem 0.5rem;
 }
@@ -109,6 +114,33 @@ input[type="range"] {
   flex-wrap: wrap;
   gap: 0.6rem;
   margin-top: 0.75rem;
+}
+
+.toggle-row {
+  margin-top: 0.75rem;
+}
+
+.toggle-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--ink);
+  font-size: 0.95rem;
+}
+
+.toggle-label input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  accent-color: var(--accent);
+}
+
+.toggle-label input[type="checkbox"]:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+#markForReviewChk:checked {
+  accent-color: #f59e0b;
 }
 
 button,
@@ -186,6 +218,13 @@ button#resetScoreBtn {
   font-weight: 600;
 }
 
+button#reviewRandomBtn {
+  background: #facc15;
+  color: #1d1d1a;
+  font-weight: 700;
+  min-width: 44px;
+}
+
 /* Weight color indicators */
 .weight-low {
   color: #2e7d32;
@@ -212,6 +251,11 @@ pre {
   gap: 0.75rem;
   margin-bottom: 0.65rem;
   color: var(--muted);
+}
+
+.review-toggle-row {
+  margin-top: 0;
+  margin-bottom: 0.65rem;
 }
 
 .weight-wrap {

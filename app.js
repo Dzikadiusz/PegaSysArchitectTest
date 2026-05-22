@@ -15,6 +15,9 @@ const easierBtn = document.getElementById("easierBtn");
 const resetWeightsBtn = document.getElementById("resetWeightsBtn");
 const jumpToInput = document.getElementById("jumpToInput");
 const jumpToBtn = document.getElementById("jumpToBtn");
+const randomizeAnswersChk = document.getElementById("randomizeAnswersChk");
+const markForReviewChk = document.getElementById("markForReviewChk");
+const reviewRandomBtn = document.getElementById("reviewRandomBtn");
 
 const questionCounter = document.getElementById("questionCounter");
 const weightInfo = document.getElementById("weightInfo");
@@ -23,6 +26,7 @@ const selectionFeedback = document.getElementById("selectionFeedback");
 const questionText = document.getElementById("questionText");
 const answerBlock = document.getElementById("answerBlock");
 const answerText = document.getElementById("answerText");
+const questionPanel = document.querySelector(".question-panel");
 
 function setSelectionFeedback(text) {
   if (selectionFeedback) {
@@ -80,15 +84,10 @@ three supported platforms (Android, iOS, or Windows Mobile), the application ope
 pointing to the appropriate app store. 
 How do you configure this behavior? 
 
-A. Add a button for each platform and configure an action set for each button. In each action set, specify 
-a click event and add an action that opens the vendor's URL in a window. 
-B. Add one button and configure three action sets. In each action set, specify a click event and add an 
-action that opens the vendor's URL in a window. 
-C. Add one button and configure one action set. In the action set, specify a click event with three actions 
-to open each vendor URL in a window. Apply a when rule to each action to determine the correct URL. 
-D. Add three check boxes and one button. For each check box, configure an action set with a click event 
-to set the value of the URL. For the button, configure an action set with a click event to open the URL in 
-a window. 
+A. Add a button for each platform and configure an action set for each button. In each action set, specify a click event and add an action that opens the vendor's URL in a window. 
+B. Add one button and configure three action sets. In each action set, specify a click event and add an action that opens the vendor's URL in a window. 
+C. Add one button and configure one action set. In the action set, specify a click event with three actions to open each vendor URL in a window. Apply a when rule to each action to determine the correct URL. 
+D. Add three check boxes and one button. For each check box, configure an action set with a click event to set the value of the URL. For the button, configure an action set with a click event to open the URL in a window. 
 Answer: A 
 7.Customers check their membership status with a company loyalty program by entering their full name 
 and member ID number. Once the membership status is returned, the customer either abandons the 
@@ -551,14 +550,10 @@ requests that the report show only those customers who meet the following condit
 on a monthly billing cycle - The credit card is either MoreCash or Vista - The credit card expires within 60 
 days. 
 Which set of filtering conditions returns a report with the desired data? 
-A. Credit Card equals MoreCash AND Credit Card equals Vista AND Billing Cycle equals monthly AND 
-Expiration Date is 60 days greater than today 
-B. Credit Card equals MoreCash OR Credit Card equals Vista AND Billing Cycle equals monthly AND 
-Expiration Date equals next 60 days. 
-C. Credit Card equals MoreCash OR Credit Card equals Vista AND Billing Cycle is not quarterly AND 
-Expiration Date is less than 60 days 
-D. Credit Card equals MoreCash or Vista, Billing Cycle equals monthly, and Expiration Date equals next
-60 days 
+A. Credit Card equals MoreCash AND Credit Card equals Vista AND Billing Cycle equals monthly AND Expiration Date is 60 days greater than today 
+B. Credit Card equals MoreCash OR Credit Card equals Vista AND Billing Cycle equals monthly AND Expiration Date equals next 60 days. 
+C. Credit Card equals MoreCash OR Credit Card equals Vista AND Billing Cycle is not quarterly AND Expiration Date is less than 60 days 
+D. Credit Card equals MoreCash or Vista, Billing Cycle equals monthly, and Expiration Date equals next 60 days 
 Answer: B D 
 66.A requirement states: A customer can update an address at any point during case processing by 
 performing the following steps. 
@@ -578,25 +573,18 @@ the employee. You configure the user view that displays remaining vacation and s
 calculates by subtracting the vacation time and sick time for the week from the current vacation and sick 
 time balances. 
 Which configuration option is used to summarize the remaining vacation and sick time? 
-A. Use a When rule. When the application references the remaining vacation and sick time, each value 
-calculates. 
-B. Use declarative processing. Whenever the vacation time or sick time entries change, the remaining 
-vacation and sick time calculate. 
-C. Use pyDefault and pySetFieldDefaults. When the process invokes the data transforms, the remaining 
-vacation and sick time calculate. 
-D. Use procedural processing with a data transform. Remaining vacation and sick time calculate after 
-the user submits a timesheet. 
+A. Use a When rule. When the application references the remaining vacation and sick time, each value calculates. 
+B. Use declarative processing. Whenever the vacation time or sick time entries change, the remaining vacation and sick time calculate. 
+C. Use pyDefault and pySetFieldDefaults. When the process invokes the data transforms, the remaining vacation and sick time calculate. 
+D. Use procedural processing with a data transform. Remaining vacation and sick time calculate after the user submits a timesheet. 
 Answer: B 
 68.University admission application cases automatically advance in the case life cycle if the application 
 standardized test scores are above a certain threshold. 
 The threshold is determined each year based on the provided national average score. 
 Which two configurations, when applied together, support this requirement? (Choose Two.) 
-A. Configure a process with a decision shape that continues if the TestThreshold configuration setting is 
-less than the applicant’s test score. 
-B. Configure a test Threshold Configuration setting that calculates the national average for the test score 
-threshold. 
-C. Configure a process with a decision shape that continues if the TestThreshold Configuration setting is 
-than the application’s test score. 
+A. Configure a process with a decision shape that continues if the TestThreshold configuration setting is less than the applicant’s test score. 
+B. Configure a test Threshold Configuration setting that calculates the national average for the test score threshold. 
+C. Configure a process with a decision shape that continues if the TestThreshold Configuration setting is than the application’s test score. 
 D. Configure a TestThreshold Configuration setting with the national average for the test score threshold. 
 Answer: A D
 69.A hotel booking application allows customers to change rooms after making a reservation. Each 
@@ -796,14 +784,10 @@ D. The connector is configured to use global resource settings.
 Answer: B C 
 95.An airline has the following requirement: A passenger requiring a service animal must document the type of animal, the size of the animal, and any relevant medical information the crew may need during the flight. The application prompts the passenger for this information when the passenger declares travel with a service animal. 
 Which case life cycle configuration meets this requirement? 
-A. Add a process to the case life cycle for service animal accommodation and apply a condition to 
-determine when to, run the process. 
-B. Apply an optional action to the appropriate stage to allow the passenger to provide the information as 
-needed. 
-C. Configure a stage in the case life cycle for service animal accommodation and apply a stage 
-validation condition. 
-D. Create a child case for service animal accommodation to automatically resolve unless the passenger 
-requires the accommodation. 
+A. Add a process to the case life cycle for service animal accommodation and apply a condition to determine when to, run the process. 
+B. Apply an optional action to the appropriate stage to allow the passenger to provide the information as needed. 
+C. Configure a stage in the case life cycle for service animal accommodation and apply a stage validation condition. 
+D. Create a child case for service animal accommodation to automatically resolve unless the passenger requires the accommodation. 
 Answer: A 
 96.A developer discovers that a calculated property value is returning an unexpected result. 
 Which two features of the Trace tool allow you to diagnose the problem without affecting application 
@@ -871,13 +855,10 @@ D. Add a router to the Select Account Type assignment.
 Answer: B 
 104.A development team plans to enhance functionality of an existing application by changing several user interface rules. The team would like to pilot the enhancements to a small group of users before rolling the changes out to the entire user base. 
 What approach maximizes reuse and maintainability? 
-A. Place the updated rules into a new minor version of the ruleset and include the new ruleset version in 
-a new application. 
+A. Place the updated rules into a new minor version of the ruleset and include the new ruleset version in a new application. 
 B. Place the updated rules into a new ruleset and include the new ruleset in a new application. 
-C. Place the updated rules into a new ruleset and include the new ruleset in a new version of the 
-application. 
-D. Place the updated rules into a new minor version of the ruleset and include the new ruleset version in 
-a new version of the application. 
+C. Place the updated rules into a new ruleset and include the new ruleset in a new version of the application. 
+D. Place the updated rules into a new minor version of the ruleset and include the new ruleset version in a new version of the application. 
 Answer: D 
 105.You want operators in two separate units to be able to perform work routed to either un it. 
 Which configuration supports this requirement? 
@@ -899,12 +880,9 @@ After the employee submits the timesheet, the application displays remaining vac
 the employee. To configure the form where users enter hours, select the best configuration option to 
 calculate the total hours for the week. 
 A. Use a When rule. When the value of any work, vacation, or sick time changes, the total hours change. 
-B. Use declarative processing. When the value of any work, vacation, or sick time changes, the total 
-hours change. 
-C. Use procedural processing. When the value of any work, vacation, or sick time changes and the user 
-submits the form, the total hours change. 
-D. Use a data transform. When the user enters the form, the data transform determines the sum of the 
-work, vacation, and sick time properties. 
+B. Use declarative processing. When the value of any work, vacation, or sick time changes, the total hours change. 
+C. Use procedural processing. When the value of any work, vacation, or sick time changes and the user submits the form, the total hours change. 
+D. Use a data transform. When the user enters the form, the data transform determines the sum of the work, vacation, and sick time properties. 
 Answer: B
 108.ABC BankCorp wants to create a mobile app experience for users and CSRs for its Transaction Dispute application. 
 Of the following requirements, which option requires you to configure distinct mobile app channels? 
@@ -935,12 +913,9 @@ Following the interview, the consulate reaches a decisions within 48 hours or mo
 proceed to application notification, the Interview case needs to be resolved. 
 After you create the Interview child case, how to do you configure the case type to achieve the required 
 behavior? 
-A. Following the Create Case step, add a Wait step that pauses the parent case until the application 
-schedules the interview. 
-B. Following the Create Case step, add a Wait step that pauses the parent case until the Interview 
-reaches the Resolved status. 
-C. Following the Create Case step, add a services-level agreement (SLA) that escalates the parent case 
-after 48 hours. 
+A. Following the Create Case step, add a Wait step that pauses the parent case until the application schedules the interview. 
+B. Following the Create Case step, add a Wait step that pauses the parent case until the Interview reaches the Resolved status. 
+C. Following the Create Case step, add a services-level agreement (SLA) that escalates the parent case after 48 hours. 
 D. Following the Create Case step, add an Interview step that is automatically resolved after 48 hours. 
 Answer: B 
 112.You want to unit test a rule. To ensure that the rule executes as intended, you need to populate the
@@ -2196,27 +2171,60 @@ function parseAnswerOptions(questionText) {
   return options;
 }
 
+function parseQuestionParts(questionText) {
+  const lines = questionText.split("\n");
+  const stemLines = [];
+  const options = [];
+
+  for (const rawLine of lines) {
+    const line = rawLine.trim();
+    const optionMatch = line.match(/^([A-Z])[\.\)\:]\s*(.+)$/);
+
+    if (optionMatch) {
+      options.push({
+        letter: optionMatch[1],
+        text: optionMatch[2].trim(),
+      });
+      continue;
+    }
+
+    stemLines.push(rawLine);
+  }
+
+  return { stemLines, options };
+}
+
+function shuffleArray(items) {
+  const cloned = [...items];
+  for (let i = cloned.length - 1; i > 0; i -= 1) {
+    const j = Math.floor(Math.random() * (i + 1));
+    const tmp = cloned[i];
+    cloned[i] = cloned[j];
+    cloned[j] = tmp;
+  }
+  return cloned;
+}
+
 function escapeHtml(text) {
   const div = document.createElement("div");
   div.textContent = text;
   return div.innerHTML;
 }
 
-function renderQuestionAsHTML(text) {
-  const lines = text.split("\n");
-  const spans = lines.map((line) => {
-    const match = line.match(/^([A-Z])[\.\)\:]/);
-    if (match) {
-      const escapedLine = escapeHtml(line);
-      const boldedLine = escapedLine.replace(/\(([^)]+)\)/g, '<strong>($1)</strong>');
-      return `<span class="answer-option" data-letter="${match[1]}">${boldedLine}</span>`;
-    }
+function renderQuestionAsHTML(stemLines, renderedOptions) {
+  const stemSpans = stemLines.map((line) => {
     const escapedLine = escapeHtml(line);
     const boldedLine = escapedLine.replace(/\(([^)]+)\)/g, '<strong>($1)</strong>');
     return `<span>${boldedLine}</span>`;
   });
 
-  return spans.join("<br>");
+  const optionSpans = renderedOptions.map((option) => {
+    const escapedLine = escapeHtml(`${option.displayLetter}. ${option.text}`);
+    const boldedLine = escapedLine.replace(/\(([^)]+)\)/g, '<strong>($1)</strong>');
+    return `<span class="answer-option" data-letter="${option.displayLetter}">${boldedLine}</span>`;
+  });
+
+  return [...stemSpans, ...optionSpans].join("<br>");
 }
 
 function getQuestionSetKey(items) {
@@ -2237,25 +2245,40 @@ function getEffectiveAnswer(question) {
   return question.answer;
 }
 
-function formatAnswerWithCorrections(questionNumber, correctAnswer) {
+function remapAnswerLetters(value, originalToDisplayMap) {
+  if (!value || !originalToDisplayMap) {
+    return value;
+  }
+
+  return value.replace(/\b([A-H])\b/g, (match, letter) => {
+    return originalToDisplayMap[letter] || match;
+  });
+}
+
+function formatAnswerWithCorrections(questionNumber, correctAnswer, originalToDisplayMap) {
   const correction = QUESTION_CORRECTIONS[questionNumber];
+  const displayedAnswer = remapAnswerLetters(correctAnswer, originalToDisplayMap);
   
   if (!correction) {
-    return escapeHtml(correctAnswer);
+    return escapeHtml(displayedAnswer);
   }
   
   if (correction.status === "INVALID") {
     return `<span style="color: #ff6b6b; font-weight: bold;">❌ ${correction.note}</span>`;
   }
+
+  const correctedAnswer = remapAnswerLetters(correction.correct, originalToDisplayMap);
+  const incorrectAnswer = remapAnswerLetters(correction.incorrect, originalToDisplayMap);
+  const correctionNote = remapAnswerLetters(correction.note, originalToDisplayMap);
   
-  let html = `<div style="margin-bottom: 8px;">${escapeHtml(correctAnswer)}</div>`;
+  let html = `<div style="margin-bottom: 8px;">${escapeHtml(displayedAnswer)}</div>`;
   html += `<div style="border-top: 2px solid #ffa500; padding-top: 8px; margin-top: 8px; color: #ff6b6b;">`;
   html += `<strong>⚠ CORRECTION NOTE:</strong><br/>`;
-  html += `Correct Answer: <strong>${escapeHtml(correction.correct)}</strong><br/>`;
+  html += `Correct Answer: <strong>${escapeHtml(correctedAnswer)}</strong><br/>`;
   if (correction.incorrect) {
-    html += `${escapeHtml(correction.incorrect)}<br/>`;
+    html += `${escapeHtml(incorrectAnswer)}<br/>`;
   }
-  html += `${escapeHtml(correction.note)}`;
+  html += `${escapeHtml(correctionNote)}`;
   html += `</div>`;
   
   return html;
@@ -2281,20 +2304,22 @@ function wireAnswerOptionSelection(question) {
   const answerOptions = questionText.querySelectorAll("[data-letter]");
 
   answerOptions.forEach((optionEl) => {
-    const letter = optionEl.dataset.letter;
+    const displayLetter = optionEl.dataset.letter;
 
     optionEl.addEventListener("click", () => {
       if (!currentQuestion || currentQuestion.number !== question.number || question._validated) {
         return;
       }
 
-      if (question._selectedLetters.has(letter)) {
-        question._selectedLetters.delete(letter);
+      const originalLetter = question._displayToOriginalLetter[displayLetter] || displayLetter;
+
+      if (question._selectedLetters.has(originalLetter)) {
+        question._selectedLetters.delete(originalLetter);
       } else {
-        question._selectedLetters.add(letter);
+        question._selectedLetters.add(originalLetter);
       }
 
-      optionEl.classList.toggle("selected-answer", question._selectedLetters.has(letter));
+      optionEl.classList.toggle("selected-answer", question._selectedLetters.has(originalLetter));
     });
   });
 }
@@ -2304,9 +2329,10 @@ function applyValidationStyles(question) {
   const correctAnswers = extractCorrectAnswers(getEffectiveAnswer(question));
 
   answerOptions.forEach((optionEl) => {
-    const letter = optionEl.dataset.letter;
-    const isSelected = question._selectedLetters.has(letter);
-    const isCorrect = correctAnswers.has(letter);
+    const displayLetter = optionEl.dataset.letter;
+    const originalLetter = question._displayToOriginalLetter[displayLetter] || displayLetter;
+    const isSelected = question._selectedLetters.has(originalLetter);
+    const isCorrect = correctAnswers.has(originalLetter);
 
     optionEl.classList.remove("selected-answer", "correct-answer", "wrong-answer", "missed-answer");
 
@@ -2391,7 +2417,7 @@ function parseQuestions(rawText) {
       continue;
     }
 
-    const answerMatch = line.match(/^Answer\s*:\s*(.*)$/i);
+    const answerMatch = line.match(/^(?:Answer|Answear|Answe?r)\s*:\s*(.*)$/i);
     if (answerMatch && active) {
       active.answer = answerMatch[1].trim();
       parsed.push(active);
@@ -2421,6 +2447,38 @@ function parseQuestions(rawText) {
   return parsed;
 }
 
+function normalizeQuestionText(rawText) {
+  let normalized = rawText
+    .replace(/\r/g, "")
+    .replace(/[ \t]+/g, " ")
+    .trim();
+
+  // Split inline options to their own lines, for example: "... A) ... B) ...".
+  normalized = normalized.replace(/\s([A-H])[\)\:\.]\s+/g, "\n$1. ");
+
+  const lines = normalized
+    .split("\n")
+    .map((line) => line.trim())
+    .filter(Boolean)
+    .map((line) => {
+      const optionMatch = line.match(/^([A-H])[\)\:\.]\s*(.*)$/);
+      if (!optionMatch) {
+        return line;
+      }
+
+      return `${optionMatch[1]}. ${optionMatch[2].trim()}`;
+    });
+
+  return lines.join("\n");
+}
+
+function normalizeParsedQuestions(items) {
+  return items.map((item) => ({
+    ...item,
+    text: normalizeQuestionText(item.text),
+  }));
+}
+
 function setControlsEnabled(enabled) {
   startSlider.disabled = !enabled;
   endSlider.disabled = !enabled;
@@ -2435,6 +2493,9 @@ function setControlsEnabled(enabled) {
   resetWeightsBtn.disabled = !enabled;
   jumpToInput.disabled = !enabled;
   jumpToBtn.disabled = !enabled;
+  randomizeAnswersChk.disabled = !enabled;
+  markForReviewChk.disabled = !enabled;
+  reviewRandomBtn.disabled = !enabled;
 }
 
 function updateRangeInfo() {
@@ -2472,7 +2533,23 @@ function pickWeightedRandom(items) {
   return items[items.length - 1] ?? null;
 }
 
+function clearQuestionSelectionState(question) {
+  if (!question) {
+    return;
+  }
+
+  question._selectedLetters = new Set();
+  question._validated = false;
+  question._wasCorrect = false;
+  question._feedback = "";
+}
+
 function renderQuestion(question) {
+  // If we are moving to a different question, clear the previous question selections.
+  if (currentQuestion && currentQuestion.number !== question.number) {
+    clearQuestionSelectionState(currentQuestion);
+  }
+
   currentQuestion = question;
   currentQuestionIndex = questions.findIndex(q => q.number === question.number);
 
@@ -2487,6 +2564,14 @@ function renderQuestion(question) {
   if (typeof question._feedback !== "string") {
     question._feedback = "";
   }
+  if (typeof question._forReview !== "boolean") {
+    question._forReview = false;
+  }
+
+  if (markForReviewChk) {
+    markForReviewChk.checked = question._forReview;
+  }
+  questionPanel.classList.toggle("reviewed-question", question._forReview);
 
   questionCounter.textContent = `Q: ${question.number}`;
   weightInfo.textContent = `Weight: ${question.weight.toFixed(2)}`;
@@ -2507,11 +2592,31 @@ function renderQuestion(question) {
     questionCounter.innerHTML = `Question: ${question.number} <span style="color: #ff6b6b; font-weight: bold; margin-left: 8px;">⚠ CORRECTION</span>`;
   }
   
-  questionText.innerHTML = renderQuestionAsHTML(question.text);
+  const { stemLines, options } = parseQuestionParts(question.text);
+  const shouldRandomize = Boolean(randomizeAnswersChk && randomizeAnswersChk.checked);
+  const orderedOptions = shouldRandomize ? shuffleArray(options) : options;
+  const renderedOptions = orderedOptions.map((option, index) => ({
+    displayLetter: String.fromCharCode(65 + index),
+    originalLetter: option.letter,
+    text: option.text,
+  }));
+
+  question._displayToOriginalLetter = {};
+  question._originalToDisplayLetter = {};
+  for (const option of renderedOptions) {
+    question._displayToOriginalLetter[option.displayLetter] = option.originalLetter;
+    question._originalToDisplayLetter[option.originalLetter] = option.displayLetter;
+  }
+
+  questionText.innerHTML = renderQuestionAsHTML(stemLines, renderedOptions);
   wireAnswerOptionSelection(question);
   applyValidationStyles(question);
 
-  answerText.innerHTML = formatAnswerWithCorrections(question.number, question.answer);
+  answerText.innerHTML = formatAnswerWithCorrections(
+    question.number,
+    question.answer,
+    question._originalToDisplayLetter,
+  );
   answerBlock.classList.add("hidden");
   setSelectionFeedback(question._feedback || "Select answers and click Validate.");
   
@@ -2539,6 +2644,18 @@ function showRandomQuestion() {
     return;
   }
 
+  renderQuestion(selected);
+}
+
+function showRandomReviewQuestion() {
+  const pool = getQuestionsInRange().filter((q) => q._forReview);
+
+  if (!pool.length) {
+    setSelectionFeedback("No questions marked for review in selected range.");
+    return;
+  }
+
+  const selected = pool[Math.floor(Math.random() * pool.length)];
   renderQuestion(selected);
 }
 
@@ -2659,6 +2776,10 @@ nextBtn.addEventListener("click", () => {
   showRandomQuestion();
 });
 
+reviewRandomBtn.addEventListener("click", () => {
+  showRandomReviewQuestion();
+});
+
 nextQBtn.addEventListener("click", () => {
   showNextQuestion();
 });
@@ -2680,8 +2801,9 @@ showAnswerBtn.addEventListener("click", () => {
   
   answerOptions.forEach((optionEl) => {
     optionEl.classList.remove("selected-answer", "correct-answer", "wrong-answer", "missed-answer");
-    const letter = optionEl.dataset.letter;
-    if (correctAnswers.has(letter)) {
+    const displayLetter = optionEl.dataset.letter;
+    const originalLetter = currentQuestion._displayToOriginalLetter[displayLetter] || displayLetter;
+    if (correctAnswers.has(originalLetter)) {
       optionEl.classList.add("correct-answer");
     }
   });
@@ -2786,8 +2908,28 @@ jumpToBtn.addEventListener("click", () => {
   renderQuestion(found);
 });
 
+randomizeAnswersChk.addEventListener("change", () => {
+  if (currentQuestion) {
+    renderQuestion(currentQuestion);
+  }
+});
+
+markForReviewChk.addEventListener("change", () => {
+  if (!currentQuestion) {
+    return;
+  }
+
+  currentQuestion._forReview = markForReviewChk.checked;
+  questionPanel.classList.toggle("reviewed-question", currentQuestion._forReview);
+  setSelectionFeedback(
+    currentQuestion._forReview
+      ? `Question ${currentQuestion.number} marked for review.`
+      : `Question ${currentQuestion.number} removed from review list.`,
+  );
+});
+
 function loadSampleData() {
-  const parsed = parseQuestions(SAMPLE_DATA);
+  const parsed = normalizeParsedQuestions(parseQuestions(SAMPLE_DATA));
 
   if (!parsed.length) {
     questions = [];
