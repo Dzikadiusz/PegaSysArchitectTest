@@ -134,6 +134,12 @@ input[type="range"] {
   accent-color: var(--accent);
 }
 
+.toggle-label input[type="radio"] {
+  width: 16px;
+  height: 16px;
+  accent-color: var(--accent);
+}
+
 .toggle-label input[type="checkbox"]:disabled {
   opacity: 0.55;
   cursor: not-allowed;
@@ -141,6 +147,21 @@ input[type="range"] {
 
 #markForReviewChk:checked {
   accent-color: #f59e0b;
+}
+
+.pool-mode-row {
+  border: 1px dashed var(--line);
+  border-radius: 10px;
+  padding: 0.55rem 0.65rem;
+  display: grid;
+  gap: 0.4rem;
+}
+
+.pool-mode-title {
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--muted);
 }
 
 button,

@@ -69,6 +69,22 @@
           <input id="endSlider" type="range" min="1" max="1" value="1" disabled />
           <span id="endValue" class="mono">1</span>
         </div>
+
+        <div class="toggle-row pool-mode-row" role="radiogroup" aria-label="Question pool">
+          <span class="pool-mode-title">Question pool</span>
+          <label for="poolModeBoth" class="toggle-label">
+            <input id="poolModeBoth" type="radio" name="questionPoolMode" value="both" checked />
+            Both
+          </label>
+          <label for="poolModeBase" class="toggle-label">
+            <input id="poolModeBase" type="radio" name="questionPoolMode" value="base" />
+            Base only
+          </label>
+          <label for="poolModeAdditional" class="toggle-label">
+            <input id="poolModeAdditional" type="radio" name="questionPoolMode" value="additional" />
+            New only
+          </label>
+        </div>
       </aside>
 
       <section class="panel question-panel">
