@@ -4352,6 +4352,35 @@ validateBtn.addEventListener("click", () => {
   applyValidationStyles(currentQuestion);
 });
 
+// Keyboard shortcuts
+document.addEventListener("keydown", (event) => {
+    // Ignore shortcuts while typing in inputs/textareas
+    const tag = document.activeElement.tagName;
+    if (tag === "INPUT" || tag === "TEXTAREA") return;
+
+    switch (event.code) {
+        case "KeyA":
+            event.preventDefault();
+            document.getElementById("prevQBtn")?.click();
+            break;
+
+        case "KeyD":
+            event.preventDefault();
+            document.getElementById("nextQBtn")?.click();
+            break;
+
+        case "Space":
+            event.preventDefault(); // Prevent page scroll
+            document.getElementById("showAnswerBtn")?.click();
+            break;
+
+        case "KeyR":
+            event.preventDefault();
+            document.getElementById("nextBtn")?.click();
+            break;
+    }
+});
+
 resetScoreBtn.addEventListener("click", () => {
   resetQuizProgress();
   if (currentQuestion) {
