@@ -72,7 +72,7 @@ A. Defining valid values for a property
 B. Caching data retrieved from an external system
 C. Storing reference data as part of the application
 D. Saving case data in an application
-Answer: B C 
+Answer: A C 
 5.As part of the case design, after someone completes a purchase, the application should send a confirmation email. 
 How do you design the case life cycle to send the email? 
 A. As part of the stage configuration
@@ -99,7 +99,7 @@ A. Configure the stage to resolve the case.
 B. Configure the case type to create temporary cases.
 C. Add a decision step to the process.
 D. Add a Persist case step to the case life cycle.
-Answer: C D 
+Answer: B D 
 8.Which two statements about data objects are true? (Choose Two) 
 A. Data objects can reuse assets from an existing data object through inheritance.
 B. A draft data object references a data type.
@@ -121,13 +121,13 @@ A. Select refer to a data page on the page property
 B. Configure the page property to refer to a keyed data page
 C. Define a reference property that refers to the data page
 D. Select copy from a data page on the page property
-Answer: A 
+Answer: D
 11.Choose two scenarios that you configure using procedural processing. (Choose Two) 
 A. A prescription order page with a list of available prescriptions sent from the customer's health care provider. When the user opts to fill one or more prescriptions, the cost summary updates.
 B. A restaurant reservation page in which the user chooses a reservation and the system returns the number of available tables.
 C. A purchase order request page with a summary of items. The order total price updates after the customer changes a quantity.
 D. A flight booking page where customers can adjust the location and date of the departure and return flights. The ticket prices recalculate after the customer chooses the "recalculate price" option.
-Answer: A B 
+Answer: C D 
 12.DRAG DROP 
 Select each Use Case on the left and drag it to the appropriate Automation on the right. 
 Answer:
@@ -200,7 +200,7 @@ A. Add a drop-down control arid source the data from the property value used in 
 B. Add a drop-down control and Source the data using a data page.
 C. Add an autocomplete control and Source the data using a data page.
 D. Add an autocomplete control and source the data from the clipboard work page.
-Answer: C 
+Answer: C F
 23.You have been asked to create a pie chart that shows the number of cases each manager has created. A list report contains columns for manager name, case ID, and office. 
 How do you configure the list report in order to create the pie chart? 
 A. Group the case ID column.
@@ -264,7 +264,7 @@ A. Never
 B. The next time the case is opened
 C. The next time the property is accessed
 D. When the item is changed
-Answer: D 
+Answer: C or D
 32.Which statement about responsive breakpoints is true? 
 A. Responsive breakpoints trigger selected behaviors to optimize data presentation.
 B. Responsive breakpoint behavior changes based on the device brand.
@@ -333,7 +333,7 @@ A. Add an auditing optional action to the case workflow.
 B. Enable the auditing feature on the property rule forms.
 C. Enable field-level auditing for the case type.
 D. Add a field validation to the case workflow.
-Answer: C 
+Answer: B
 41.Hospital staff members enter appointment details including relevant patient information, diagnoses, 
 lab orders, and prescribed medication. This information is aggregated in the Patient visit summary view. 
 The patient receives a copy of this view through email. 
@@ -364,7 +364,7 @@ A. Linked Property Pages
 B. User Pages
 C. Data Pages
 D. System Pages
-Answer: C 
+Answer: B 
 44.What is the purpose of the Test coverage tool? 
 A. To determine how many rules are covered and not covered bv Peqa Platform tests.
 B. To determine which application needs to be assessed for test coverage.
@@ -553,7 +553,7 @@ A. Add a case-wide optional action to the workflow for the address submission.
 B. Add a case-wide optional process to the case workflow to perform the address change.
 C. Add an alternate stage to the case life cycle to change the address.
 D. Add a button to each assignment to present the customer with a form to submit a new address.
-Answer: B 
+Answer: A
 67.You create an application for employees to submit timesheets. Employees enter work, vacation, and 
 sick time for a particular week. On the entry form, employees see a summary of the total hours entered. 
 After the employee submits the timesheet, the application displays remaining vacation and sick time for 
@@ -689,7 +689,7 @@ A. Worked on weekend -> VP Finance
 B. Negative time-off balance -> HR Director
 C. Any overtime -> Manager of Supervisor
 D. Regular 40 hours -> Supervisor of Employee
-Answer: A C 
+Answer: A B 
 84.You are asked to build a report listing customer order cases with an Order Total value over 
 USD10000 sorted by Creation date (pxCreateDate). The report should display the following three fields: 
 Case ID (pylD), Customer ID, and Order Total. 
@@ -698,7 +698,7 @@ A. Order Total
 B. pxCreateDate
 C. Customer ID and Order Total
 D. pxCreateDate and Order Total
-Answer: D 
+Answer: A 
 85.Which two data requirements ensure valid data? (Choose Two) 
 A. The data fits the business logic.
 B. The data is organized in a data type.
@@ -769,7 +769,7 @@ A. The service has slow response times.
 B. The service is not available yet.
 C. You need to test each flow path in the case processing.
 D. The connector is configured to use global resource settings.
-Answer: B C 
+Answer: A B
 95.An airline has the following requirement: A passenger requiring a service animal must document the type of animal, the size of the animal, and any relevant medical information the crew may need during the flight. The application prompts the passenger for this information when the passenger declares travel with a service animal. 
 Which case life cycle configuration meets this requirement? 
 A. Add a process to the case life cycle for service animal accommodation and apply a condition to determine when to, run the process.
@@ -1057,7 +1057,7 @@ B. Empower project participants to review development progress.
 C. Facilitate collaboration between business and IT around working models.
 D. Automate custom business processes.
 E. Enter and store business requirements in the application.
-Answer: A C E 
+Answer: B C E
 133.Which two use cases are supported by configuring a mobile channel in App Studio? (Choose Two) 
 A. Grant access to the application for a specific user.
 B. Set the width of an application icon to 180x180 pixels.
@@ -1072,7 +1072,7 @@ A. In the Employment Information process add a card type true/false field to a u
 B. In the Employment Information process add a custom condition to start the process by testing the card type.
 C. In the Employment Information process add an Approve/Reject step to test the card type.
 D. In the Employment Information process validate card type for continued processing.
-Answer: D 
+Answer: C 
 135.You need to localize correspondence into a language that is unavailable in the Pega language pack. 
 Which option satisfies the requirement? 
 A. Leverage translation services SOAP calls and enable records for translation.
@@ -1141,7 +1141,7 @@ A. One team creates a new patch for an application while another team creates a 
 B. You need to delegate rules to process owners from the business
 C. Multiple teams need to work on the same application version
 D. A team needs to work on the next version of an application while preparing to migrate the current version.
-Answer: C 
+Answer: A
 144.A survey is sent to a customer via email. 
 How do you configure a solution to ensure the email includes the case ID for the survey? 
 A. Create a required field for the case ID that must be entered by a user during the case process prior to sending the survey.
@@ -1164,7 +1164,7 @@ A. A Data reference field
 B. An Embedded data field
 C. A Case reference field
 D. A Query field
-Answer: A 
+Answer: B
 147.An online shopping application allows customers to select the item quantity of different goods and 
 add items to the shopping cart. In the shopping cart, the application displays the price for each item type, 
 indicates the quantity of each item type, calculate the total item prices, and calculate the total cost for all 
@@ -1175,7 +1175,7 @@ A. Verify the data page has the correct item prices.
 B. Verify the data transform copies the correct value from the data page to the shopping cart page.
 C. Verify the price fields are displayed in the correct format.
 D. Verify the order total cost property is accurately calculated
-Answer: A B D 
+Answer: A C 
 148.An online retailer allows customers to select a courier service for deliveries. The list of available 
 courier services is drawn from a data type sourced in the Pega database. The Fulfillment department 
 wants to allow local warehouse managers to add courier services to mitigate increases in delivery times 
@@ -1194,20 +1194,20 @@ A. Enable section editing and configure the selection check box by removing the 
 B. Create a field group list property and make the property a data reference.
 C. Configure the view in Run mode and change the order of the columns in the view.
 D. Edit the field group list property and set data access to copy data from a data page.
-Answer: A B 
+Answer: D B 
 150.A music studio allows clients to upload audio recordings, and if they choose, they can upload before they begin consultation. The studio wants to pause case processing after the Client Intake stage and give clients 72 hours to upload recordings before beginning the Client Consultation process. 
 Which configuration meets this requirement? 
 A. Configure a case wide optional action to allow uploads. Add a Wait shape with a Timer Wait type set to 72 hours.
 B. Configure a service level on the stage that contains the Client Consultation process with a deadline of 72 hours.
 C. Configure a child case to upload recordings. Add a Wait shape with a case dependency until the child case is resolved.
 D. Configure a validate rule on the Client Intake stage and set the elapsed time to 72 hours.
-Answer: D 
+Answer: B 
 151.Which requirement is best implemented by using a Wait step in a case? 
 A. You must pause a case until a user uploads a signed document.
 B. You cannot proceed in an expense report until a manager approves the request.
 C. You cannot complete a purchase case on a website unless you complete a new account subcase.
 D. You need to send an email after a user completes a form.
-Answer: B
+Answer: C
 152.Which two requirements ensure that valid data is used in a case? (Choose two.) 
 A. The data fits the business logic.
 B. The data is locally sourced.
@@ -1249,7 +1249,7 @@ A. The application skin
 B. The buttons format
 C. The controls format
 D. The background mixin
-Answer: B 
+Answer: A
 158.Several Development teams work on different enhancements. 
 The release date for each enhancement is uncertain. 
 Which two options allow each team to keep its work separate? (Choose Two) 
@@ -1264,7 +1264,7 @@ A. When the Process ticket step starts
 B. When the Triage stage starts
 C. When the Enter Ticket Details step completes
 D. When the Process ticket step completes
-Answer: D 
+Answer: A
 160.Based on security factors, which two options are considered strong passwords? (Choose Two) 
 A. lLik3Chocolate&sawDustIcecre@m
 B. d8073&gxn*,.ki;vnhdf($h&m
@@ -1315,7 +1315,7 @@ A. A data page populates without any errors.
 B. A property value is set correctly by a data transform.
 C. An application displays user views for 20 users within three seconds.
 D. An application is successfully migrated to a test system.
-Answer: A D 
+Answer: A B
 167.Customers can log their own product support requests using an online portal. Once logged in, the 
 portal displays the list of products purchased by the customer. The customer can initiate one or more 
 support requests for each product. 
@@ -1345,7 +1345,7 @@ Answer: B D E
 A. Use a when condition in a data transform to determine whether to show the mobile phone number field.
 B. Use a when condition in the flow to branch the flow based on case data.
 C. Use a circumstance on the check box property to create a rule variant that is effective when the check box is selected.
-D. Use a when condition in the Ul form to determine whether to show the mobile phone number field.
+D. Use a when condition in the UI form to determine whether to show the mobile phone number field.
 Answer: D 
 171.In a hiring application: 
 * An employee interviews the candidate.
@@ -1441,7 +1441,7 @@ A. A sales representative wants to quote the cost of an insurance policy based o
 B. An accountant wants to list the largest order for the last month, for each customer account.
 C. A project manager wants to estimate the cost of painting a banquet hall based on labor and materials required.
 D. A certification manager wants to determine the number of exams conducted at each testing facility in the current quarter.
-Answer: A D 
+Answer: A C
 183.Which two statements demonstrate the role of a report? (Choose Two) 
 A. Reports are used to assess process performance.
 B. Reports are used to update data in a database.
@@ -1487,7 +1487,7 @@ A. Configure a text box to allow date entry.
 B. Use a calendar control that displays an entire year.
 C. Use a calendar control that displays an entire month.
 D. Provide separate controls for month, day, and year.
-Answer: D 
+Answer: C (used flagged to be D) 
 189.An organization has two lines of business: selling books for children and reselling college textbooks. 
 The division selling books for children can use the same basic user interface (Ul) as the division reselling 
 textbooks with the exception of the payment methods. 
@@ -1504,7 +1504,7 @@ A. Configure the request type as a weighted condition.
 B. Configure the tenant name as a basic condition.
 C. Configure the apartment address as a basic condition.
 D. Configure the apartment address as a weighted condition.
-Answer: A B
+Answer: A C
 191.Which use case describes the function of the Estimator tool? 
 A. A tester needs to know how many versions of an application they test for MPL2.
 B. A business architect needs to know when to prioritize a specific customer Microjourney for development.
@@ -1535,7 +1535,7 @@ A. Use the purchase requests column to group the cost centers.
 B. Filter the results so that the report includes only cost center and purchase requests.
 C. Summarize the purchase requests column by count.
 D. Summarize the regional cost centers by count.
-Answer: D 
+Answer: C 
 195.An internal application grants 75 employees access to one of four personas: Admin, Author, User, 
 and Manager. A new analyst who joins the company requires all the access of the Author persona, but 
 only some of the reporting features that are available to the Manager persona. 
@@ -1553,7 +1553,7 @@ A. Create a unit test for the case type.
 B. Create a scenario test for the case type.
 C. Add explicit assertions on the UI elements.
 D. Add explicit assertions on the Scenario testing landing page.
-Answer: A C 
+Answer: B C 
 197.In a Credit Card Payment case type, you want to set the yearly fee to USD 75. 
 How do you set the Yearly fee field? 
 A. Configure field validation on the Yearly fee field.
@@ -1582,7 +1582,7 @@ A. Mobile apps must support both phones and tablets.
 B. Customers can create only dispute cases, while CSRs can also create fraud report cases.
 C. Mobile app color palette is customized for each subsidiary.
 D. The app customizes currency units and date/time format according to the user's locale.
-Answer: A C 
+Answer: B C 
 201.An internet provider has a quiz that gives customers a recommended internet speed based on their 
 typical internet use. The questions differ based on the selections that the customer makes, for example, 
 whether they are seeking a recommendation for a residence or a business. 
@@ -1591,7 +1591,7 @@ A. Configure a decision table
 B. Configure a view with the quiz questions
 C. Configure a decision tree
 D. Configure a process with multiple decision shapes
-Answer: C 
+Answer: A
 202.In the first step in a case type, the user compares data on a form to the data on a customer account. 
 If the data matches, the case is resolved. If the data does not match, the user advances the case to 
 update the account. 
@@ -1607,7 +1607,7 @@ A. Test for missing conditions
 B. Test for completeness
 C. Test the rule using a unit test
 D. Test for conflicts
-Answer: A 
+Answer: B
 204.All managers must be able to view the Employee vacation requests report in their Manager portal 
 dashboards. 
 Which configuration fulfills this requirement? 
@@ -1655,7 +1655,7 @@ A. A visibility condition (When rule) that applies to the Select flight insuranc
 B. A visibility condition (When rule) that applies to the view with the flight insurance information.
 C. A disable condition (When rule) that applies to the Select flight insurance checkbox.
 D. A disable condition (When rule) that applies to the view with the flight insurance information.
-Answer: D 
+Answer: A
 210.Which three statements are true about DevOps practices in pega priority. (Choose three)
 A. Intermittent delivery is preferred to help plan predictable releases
 B. Acceptance criteria helps to focus customer-centric deployment
@@ -1671,7 +1671,7 @@ B. Calendar control
 C. Date data type
 D. Validation rule
 E. Edit validate rule
-Answer: A B D 
+Answer: A D E 
 212.In an insurance claim application, you have the following requirement: All claims must be resolved 
 within 1 week. 
 To meet this requirement you configure a service level. Where should the service level be configured? 
@@ -1697,7 +1697,7 @@ C. Set the importance of the image column to Other.
 D. Set the importance of the Restaurant name and Make reservation columns to Primary.
 E. Set the importance of the Restaurant location and Make reservation columns to Secondary.
 F. Set the importance of the Restaurant name column to Primary.
-Answer: C E F 
+Answer: A D E 
 215.Which statement about channel interfaces is true? 
 A. Creating a channel interface creates a default work queue in Agg Studio.
 B. All users see the same channel interface.
@@ -1723,7 +1723,7 @@ A. Application
 B. Node
 C. Thread
 D. Requestor
-Answer: A 
+Answer: B 
 219.Which two options can you configure for a mobile app channel? (Choose Two) 
 A. Define security behavior for a mobile app such as biometric identifiers.
 B. Manage administrative functions such as access to log files.
@@ -1744,7 +1744,7 @@ A. Update User A to the same role as User B
 B. Add the My Cases page to the User A profile.
 C. Update the User A account to access the same portal as User
 D. Add the My Cases page to the User A role
-Answer: B 
+Answer: D
 222.Identify Text, Multi record data relationship, Single record data relationship 
 A. .Address( 1 ).pincode
 B. .ShippingAddress.City
@@ -1789,7 +1789,7 @@ A. An automation
 B. A mobile User Portal
 C. An approval decision
 D. An external system of record (SOR)
-Answer: B C 
+Answer: A C 
 228.In a Credit Card Payment case type, you want to set the yearly fee to USD 75. 
 How do you set the Yearly fee field? 
 A. In the Data initialization page, set tine Yearly fee field to 75.
@@ -1812,7 +1812,7 @@ B. Identify how different mobile devices render UI controls.
 C. Establish security behavior for a mobile app, such as the use of biometric identifiers.
 D. Define UI behavior for a view when displayed on a mobile device.
 E. Define the role applied to users when they run the mobile app.
-Answer: B C D 
+Answer: C D E
 231.Which two dependencies do you directly enforce with a Wait step? (Choose Two) 
 A. Pausing a case until a predetermined time expires
 B. Pausing a case until a user submits a specified value
@@ -1831,7 +1831,7 @@ A. A user Mobile App channel
 B. An external system of record (SOR)
 C. An automation
 D. An approval decision
-Answer: B C 
+Answer: D C 
 234.The following example shows the ruleset list for the logged in operator. 
 What is stored in the Admin@MyCo ruleset? 
 Admin@MyCo: 
@@ -1881,8 +1881,7 @@ B. Use a validate rule to verify the Date account opened is in the past.
 C. Use a when rule to verify the Date account opened is in the past.
 D. Use a calendar control to verify the Date account opened is in the past.
 Answer: B 
-239.Which two scenarios require you to configure conditional processing within the case type? (Choose 
-Two.) 
+239.Which two scenarios require you to configure conditional processing within the case type? (Choose Two.) 
 A. A scholarship eligibility application requires students to enter standardized test scores, Students with qualifying test scores can schedule and interview. Students without qualifying test scores receives a rejection email.
 B. A catering booking application requires customers to enter information about the expected party size, event date, and event time. When customers submit the information the catering company sends a confirmation email.
 C. An application requires customer to select the type of request in a drop-down list. The system routes the request to the appropriate department work queue. A user with access to the work queue processes the case through fulfillment.
@@ -1916,7 +1915,7 @@ A. Add a must match condition where the work status of the current case does not
 B. Add a weighted condition where the work status of potential duplicates does not contain "Resolved"
 C. Add a weighted condition that evaluates the work status of current and existing cases where work status equals "Resolved" and has a weight of "0"
 D. Add a must match condition where the work status of potential duplicates does not contain "Resolved".
-Answer: B 
+Answer: D
 244.What are two ways you can create a view with editable fields in an application built on the 
 Constellation architecture? (Choose two.) 
 A. On the Data model tab of a case type, configure a view.
@@ -1944,7 +1943,7 @@ A. A User Mobile App channel
 B. An external system of record (SOR)
 C. An automation
 D. An approval decision
-Answer: A D 
+Answer: C D 
 248.Which two configurations do you use to validate the minimum age of a new potential customer in the 
 Collect Account lnformation assignment step? (Choose Two) 
 A. Create an Edit Validate rule to check the customer age.
@@ -1968,7 +1967,7 @@ A. Route the case to a worklist using a skilled router.
 B. Route the case to a work queue using a When condition.
 C. Route the case to a work queue using a skilled router.
 D. Route the case to a worklist using a When condition.
-Answer: C 
+Answer: D
 251.In an application for configuring hardware equipment for new employees, the manager chooses a 
 laptop model from a drop-down list. The list of available laptop models is maintained in an external 
 system and may change over time. 
@@ -2013,7 +2012,15 @@ A. Prediction Studio
 B. Admin Studio
 C. App Studio
 D. Dev Studio
+Answer: D  
+257.In the development of a boat repair case type, a business requirement states that clients can set their boat type as Powered, Sail, or Row. During the Inspection stage, the Inspect Boat process prompts technicians to inspect the common parts of all boats. However, if .boatType = 'Sail,' the technicians are additionally prompted to complete the Inspect Sailboat process.  
+How do you configure the case life cycle to achieve this behavior? 
+A. Configure the Inspect Sailboat process to start if the .boatType is not 'Powered'. Otherwise, the system skips the process. 
+B. Configure the Inspect Boat process to start if the .boatType is not 'Powered'. Otherwise, the system skips the process. 
+C. Configure the Inspect Boat process to start if the .boatType = 'Sail'. Otherwise, the system skips the process. 
+D. Configure the Inspect Sailboat process to start if the .boatType = 'Sail'. Otherwise, the system skips the process. 
 Answer: D  `;
+
 
 // Question corrections and notes
 const ADDITIONAL_QUESTIONS_DATA = `
@@ -3478,8 +3485,6 @@ const QUESTION_CORRECTIONS = {
   178: { correct: "D", incorrect: "B", note: "not B (use Insight, not widget directly)" },
   190: { correct: "A,C", incorrect: "A,B", note: "not A,B (address = key duplicate condition)" },
   209: { correct: "A", incorrect: "D", note: "not D (visibility on checkbox itself)" },
-  212: { correct: "A", incorrect: "C", note: "not C (SLA = process level)" },
-  218: { correct: "B", incorrect: "A", note: "not A (node scope, not app)" },
   221: { correct: "C", incorrect: "B", note: "not B (portal controls access)" },
   224: { correct: "A", incorrect: "A,D", note: "not A,D (responsive layout only)" },
   250: { correct: "D", incorrect: "C", note: "not C (specific user = worklist)" },
@@ -4377,6 +4382,16 @@ document.addEventListener("keydown", (event) => {
         case "KeyR":
             event.preventDefault();
             document.getElementById("nextBtn")?.click();
+            break;
+
+        case "KeyQ":
+            event.preventDefault();
+            document.getElementById("validateBtn")?.click();
+            break;            
+
+        case "KeyE":
+            event.preventDefault();
+            document.getElementById("reviewRandomBtn")?.click();
             break;
     }
 });
