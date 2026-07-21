@@ -112,7 +112,7 @@ A. Total working hours
 B. Calculate field, data transform
 C. Sick hours
 D. Leave hours
-Answer: A 
+Answer: B 
 10.A disrupted transaction case records account information using a page property. Account information 
 is recorded at the time the case is created and does not update when the case is further processed. 
 Account information is stored in an external system and accessed by a data page. 
@@ -503,7 +503,7 @@ A. Investigate Claim
 B. Claim Investigation
 C. Fraud Claim
 D. Investigate Fraud
-Answer: D
+Answer: A
 62.You are implementing a Ul form collecting job applicant information. Users must provide values to 
 certain fields before submitting the form. 
 Which configuration adds asterisks to indicate the mandatory fields on the form? 
@@ -1601,7 +1601,7 @@ A. Add a persist case shape after the first step.
 B. Configure the starting flow to instantiate the case type as a temporary case.
 C. Apply a when condition to the first step to persist only cases requiring updates.
 D. Configure the first step to instantiate the case type as a temporary case.
-Answer: A C 
+Answer: A B 
 203.How do you identify if a result in a decision rule cannot be returned? 
 A. Test for missing conditions
 B. Test for completeness
@@ -1715,7 +1715,7 @@ A. Service agents are able to enter feedback in multiple languages.
 B. A global hotel chain application can display current amenities in 23 languages.
 C. Customers can add an unlimited number of items to an online shopping card.
 D. A government official can enter comments that require location.
-Answer: B D 
+Answer: B 
 218.Your online shopping application serves international customers. You need to define a Data Page 
 that holds currency exchange rates. All users accessing the application need to use the information. 
 The Scope of this Data Page should be set to____. 
@@ -3461,7 +3461,6 @@ Answer: C D
 `;
 
 const QUESTION_CORRECTIONS = {
-  9: { status: "INVALID", note: "INVALID_QUESTION" },
   18: { correct: "D", incorrect: "A", note: "not A (simulate data, not integration migration)" },
   23: { correct: "B", incorrect: "D", note: "not D (group by manager)" },
   31: { correct: "A", incorrect: "D", note: "not D (copy-from data page = one-time only)" },
